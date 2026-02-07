@@ -1,11 +1,12 @@
 import React, {useState} from 'react'
 
-export default function Login() {
+export default function Login({onLogin}) {
   const[data, setdata] = useState({
     email: "",
     password: ""
   })
   const[show, setShow]= useState(false)
+  const [error, setError] = useState("");
   const saving =(e)=>{
     setdata({
     ...data,
@@ -18,8 +19,12 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Email:", data.email);
-    console.log("Password:", data.password);
+    if (data.email === "abc@gmail.com" && data.password === "kit@123") {
+      setError("");
+      onLogin();
+    } else {
+      setError("Invalid email or password");
+    }
   };
   const isValid = data.email !== "" && data.password !== "";
 

@@ -7,6 +7,7 @@ import NotFound from "./pages/NotFound";
 import Notes from "./pages/Notes";
 import HomePage from "./pages/HomePage";
 import { useState } from "react";
+import ProtectedRoutes from "./assets/ProtectedRoutes";
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(
       localStorage.getItem("isLoggedIn") === "true"
@@ -32,8 +33,10 @@ function App() {
         <Route path="/" element={<HomePage/>} />
         <Route path="/about" element={<About/>} />
         <Route path="/login" element={isLoggedIn ? <Navigate to="/tasks" /> : <Login onLogin={handleLogin} />}/>
-        <Route path="/tasks" element={isLoggedIn ? <Tasks /> : <Navigate to="/login" />}/>
-        <Route path="/notes" element={isLoggedIn ? <Notes /> : <Navigate to="/login" />}/>
+        <Route element={<ProtectedRoutes isLoggedIn={isLoggedIn} />}>
+          <Route path="/tasks" element={<Tasks />} />
+          <Route path="/notes" element={<Notes />} />
+        </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
