@@ -30,7 +30,7 @@ function App() {
       <Navbar title = "NoteBook!" isLoggedIn={isLoggedIn}
           handleLogout={handleLogout}></Navbar>
       <Routes>
-        <Route path="/" element={<HomePage/>} />
+        <Route path="/" element={<HomePage isLoggedIn={isLoggedIn} handleLogout={handleLogout}/>} />
         <Route path="/about" element={<About/>} />
         <Route path="/login" element={isLoggedIn ? <Navigate to="/tasks" /> : <Login onLogin={handleLogin} />}/>
         <Route element={<ProtectedRoutes isLoggedIn={isLoggedIn} />}>

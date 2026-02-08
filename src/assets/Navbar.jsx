@@ -7,7 +7,7 @@ export default function Navbar({ title, isLoggedIn, handleLogout }) {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary mx-1">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark mx-1 sticky-top">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
             <i className="fa-solid fa-book-open"></i> {title}
@@ -33,7 +33,7 @@ export default function Navbar({ title, isLoggedIn, handleLogout }) {
               )}
               <li className="nav-item">
                 <Link className="nav-link mx-2" to="/about">
-                  <i className="fa-solid fa-address-card"></i> About Us
+                  <i className="fa-solid fa-address-card"></i> Contact Us
                 </Link>
               </li>
               <li className="nav-item">
@@ -59,7 +59,7 @@ export default function Navbar({ title, isLoggedIn, handleLogout }) {
         </div>
       </nav>
 
-      {/* ✅ CONFIRM LOGOUT MODAL */}
+      {/*CONFIRM LOGOUT MODAL */}
       <ConfirmModal
         show={showLogoutModal}
         title="Confirm Logout"
