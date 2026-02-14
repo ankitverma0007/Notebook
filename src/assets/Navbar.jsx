@@ -7,59 +7,84 @@ export default function Navbar({ title, isLoggedIn, handleLogout }) {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark mx-1 sticky-top">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
-            <i className="fa-solid fa-book-open"></i> {title}
+
+          {/* BRAND */}
+          <Link className="navbar-brand fw-bold" to="/">
+            <i className="fa-solid fa-book-open me-2"></i>
+            {title}
           </Link>
 
-          <div className="collapse navbar-collapse mx-5">
-            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+          {/* TOGGLER (MOBILE) */}
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
 
+          {/* COLLAPSE MENU */}
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav ms-auto align-items-lg-center">
+
+              {/* AUTH LINKS */}
               {isLoggedIn && (
                 <>
                   <li className="nav-item">
-                    <Link className="nav-link mx-3" to="/notes">
-                      <i className="fa-solid fa-notes-medical"></i> Notes
+                    <Link className="nav-link mx-4" to="/notes">
+                      <i className="fa-solid fa-notes-medical me-1"></i>
+                      Notes
                     </Link>
                   </li>
 
                   <li className="nav-item">
-                    <Link className="nav-link mx-3" to="/tasks">
-                      <i className="fa-solid fa-list-check"></i> Tasks
+                    <Link className="nav-link mx-4" to="/tasks">
+                      <i className="fa-solid fa-list-check me-1"></i>
+                      Tasks
                     </Link>
                   </li>
                 </>
               )}
+
+              {/* COMMON LINK */}
               <li className="nav-item">
-                <Link className="nav-link mx-2" to="/about">
-                  <i className="fa-solid fa-address-card"></i> Contact Us
+                <Link className="nav-link mx-4" to="/about">
+                  <i className="fa-solid fa-address-card me-1"></i>
+                  Contact
                 </Link>
               </li>
-              <li className="nav-item">
+
+              {/* LOGIN / LOGOUT */}
+              <li className="nav-item mx-4">
                 {isLoggedIn ? (
                   <button
-                    onClick={() => setShowLogoutModal(true)}
-                    className="nav-link btn btn-link mx-3"
+                    className="nav-link bg-transparent border-0"
                     style={{ cursor: "pointer" }}
+                    onClick={() => setShowLogoutModal(true)}
                   >
-                    <i className="fa-solid fa-right-from-bracket"></i> Logout
+                    <i className="fa-solid fa-right-from-bracket me-1"></i>
+                    Logout
                   </button>
                 ) : (
-                  <Link className="nav-link mx-3" to="/login">
-                    <i className="fa-solid fa-user"></i> Log in
+                  <Link className="nav-link" to="/login">
+                    <i className="fa-solid fa-user me-1"></i>
+                    Login
                   </Link>
                 )}
               </li>
-
-              
 
             </ul>
           </div>
         </div>
       </nav>
 
-      {/*CONFIRM LOGOUT MODAL */}
+      {/* LOGOUT CONFIRM MODAL */}
       <ConfirmModal
         show={showLogoutModal}
         title="Confirm Logout"

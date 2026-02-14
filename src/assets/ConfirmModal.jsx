@@ -31,9 +31,6 @@ export default function ConfirmModal({
             </div>
 
             <div className="modal-footer">
-              {/* <button className="btn btn-secondary" onClick={onCancel}>
-                Cancel
-              </button> */}
               <button className="btn btn-dark" onClick={onConfirm}>
                 Confirm
               </button>
