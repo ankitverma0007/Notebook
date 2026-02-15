@@ -42,23 +42,8 @@ export default function HomePage({isLoggedIn, handleLogout}) {
               <br/>Create your account and take control of your notes and tasks.</p>
             
             {isLoggedIn ? (
-                  <>
                     <p className='fs-5'>“You’re signed in — jump back into your work.”</p>
-                    <Link to="/profile"className="btn btn-dark mx-5 my-2">My profile</Link>
-                  </>
                 ) : (<Link to="/signup"className="btn btn-dark mx-5">Get Started! </Link>)}
-
-            {isLoggedIn ? (
-                  <button
-                    onClick={() => setShowLogoutModal(true)}
-                    className="btn btn-dark mx-5"
-                    style={{ cursor: "pointer" }}>
-                    <i className="fa-solid fa-right-from-bracket"></i> Logout
-                  </button>
-                ) : (
-                  <Link className="btn btn-dark mx-5" to="/login">
-                    Log in!
-                  </Link>)}
           </div>
         </div>
         
